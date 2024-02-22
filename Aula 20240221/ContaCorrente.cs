@@ -8,20 +8,23 @@ namespace Aula20240215
 {
     public class ContaCorrente
     {
-        private double saldo { get; set; }
-        private string proprietario { get; set; }
-        private string log { get; set; }
+        public double saldo { get; set; }
+        public string proprietario { get; private set; }
+        public string log { get; private set; }
+
 
         public ContaCorrente(string proprietario, double saldo)
         {
-            this.saldo = saldo;
             this.proprietario = proprietario;
+            this.saldo = saldo;
+            this.log = $"Extrato de {proprietario}\n";
         }
 
         public Boolean depositar(double valor_deposito)
         {
             saldo += valor_deposito;
             Console.WriteLine("\nDeposito realizado.\n");
+            Log($"\nDeposito no valor de {valor_deposito}");
             return true;
         }
 
@@ -30,7 +33,8 @@ namespace Aula20240215
             if(saldo >= valor_saque)
             {
                 saldo -= valor_saque;
-                Console.WriteLine("\nDeposito realizado.\n");
+                Console.WriteLine($"\nSaque realizado.\n");
+                Log($"\nSaque no valor de {valor_saque}");
                 return true;
             }
             else
@@ -39,6 +43,12 @@ namespace Aula20240215
                 return false;
             }
         }
+
+        public void Log(string dado)
+        {
+            this.log += dado;
+        }
+      
 
     }
 }

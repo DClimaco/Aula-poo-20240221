@@ -14,6 +14,7 @@ namespace Aula20240215
 
             cont.depositar(1000);
             cont.sacar(6395);
+            Console.WriteLine(cont.log);
         }
     }
 }
